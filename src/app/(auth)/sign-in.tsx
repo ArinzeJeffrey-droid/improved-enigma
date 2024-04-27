@@ -28,6 +28,7 @@ const SignInScreen = () => {
         value={password}
         onChangeText={setPassword}
         style={styles.input}
+        secureTextEntry
       />
 
       <Button onPress={onSubmit} text="Sign in" />
