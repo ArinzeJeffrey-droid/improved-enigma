@@ -4,7 +4,7 @@ import { Stack } from "expo-router";
 import { ActivityIndicator, FlatList, Text } from "react-native";
 
 export default function MenuScreen() {
-  const { data: orders, isLoading, error } = useAdminOrderList();
+  const { data: orders, isLoading, error } = useAdminOrderList({ archived: false });
 
   if (isLoading) return <ActivityIndicator />;
 
