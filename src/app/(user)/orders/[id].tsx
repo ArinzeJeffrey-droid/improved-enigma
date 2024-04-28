@@ -1,13 +1,21 @@
-import { View, Text, StyleSheet, FlatList, ActivityIndicator } from "react-native";
+import {
+  View,
+  Text,
+  StyleSheet,
+  FlatList,
+  ActivityIndicator,
+} from "react-native";
 import { Stack, useLocalSearchParams } from "expo-router";
 import OrderItemListItem from "../../../components/OrderItemListItem";
 import OrderListItem from "../../../components/OrderListItem";
 import { useOrderDetails } from "@/src/api/orders";
+import { useOrderUpdateSubscription } from "@/src/api/orders/subscriptions";
 
 const OrderDetailScreen = () => {
   const { id: idString } = useLocalSearchParams();
   const id = parseFloat(typeof idString === "string" ? idString : idString[0]);
   const { data: order, error, isLoading } = useOrderDetails(id);
+  useOrderUpdateSubscription(id);
 
   if (!order) {
     return <Text>Order not found!</Text>;
@@ -15,7 +23,7 @@ const OrderDetailScreen = () => {
 
   if (isLoading) return <ActivityIndicator />;
 
-  if(error) return <Text>Failed to fetch products</Text>
+  if (error) return <Text>Failed to fetch products</Text>;
 
   return (
     <View style={styles.container}>
@@ -23,6 +31,7 @@ const OrderDetailScreen = () => {
 
       <FlatList
         data={order.order_items}
+        // @ts-ignore
         renderItem={({ item }) => <OrderItemListItem item={item} />}
         contentContainerStyle={{ gap: 10 }}
         ListHeaderComponent={() => <OrderListItem order={order} />}
