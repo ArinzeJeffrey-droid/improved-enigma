@@ -24,6 +24,11 @@ const ProductDetailScreen = () => {
     router.push("/cart");
   };
 
+  if (!product) {
+    return <Text>Product not found!</Text>;
+  }
+
+
   if (isLoading) return <ActivityIndicator />;
 
   if(error) return <Text>Failed to fetch products</Text>
