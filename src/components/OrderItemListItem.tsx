@@ -3,6 +3,7 @@ import React from "react";
 import Colors from "../constants/Colors";
 import { Tables } from "../types";
 import { defaultImage } from "./ProductListItem";
+import RemoteImage from "./RemoteImage";
 
 type OrderItemListItemProps = {
   item: { products: Tables<"products"> } & Tables<"order_items">;
@@ -11,9 +12,9 @@ type OrderItemListItemProps = {
 const OrderItemListItem = ({ item }: OrderItemListItemProps) => {
   return (
     <View style={styles.container}>
-      <Image
-        source={{ uri: item.products.image || defaultImage }}
-        style={styles.image}
+      <RemoteImage
+        path={item.products.image}
+        fallback={defaultImage}
         resizeMode="contain"
       />
       <View style={{ flex: 1 }}>
