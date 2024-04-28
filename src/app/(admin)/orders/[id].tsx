@@ -27,6 +27,7 @@ const OrderDetailScreen = () => {
 
       <FlatList
         data={order.order_items}
+        // @ts-ignore
         renderItem={({ item }) => <OrderItemListItem item={item} />}
         contentContainerStyle={{ gap: 10 }}
         ListFooterComponent={() => (
