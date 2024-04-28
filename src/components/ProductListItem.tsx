@@ -1,10 +1,10 @@
 import Colors from "@/src/constants/Colors";
 import { StyleSheet, Text, Image, Pressable } from "react-native";
-import type { Product } from "../types";
+import type { Tables } from "../types";
 import { Link, useSegments } from "expo-router";
 
 type Props = {
-  product: Product;
+  product: Tables<"products">;
 };
 
 export const defaultImage =
