@@ -10,7 +10,6 @@ import {
   StyleSheet,
   View,
   Text,
-  Image,
   Pressable,
   ActivityIndicator,
 } from "react-native";
